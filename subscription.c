@@ -148,10 +148,10 @@ void OvcSubscription(unsigned char *buffer, int offset, ov_subscription *ovSubsc
 ov_subscription* GetAllSubscriptions(unsigned char *buffer) {
    uint8_t count = 15;
    int offset = 0x800;
+   ov_subscription *subscriptions;
 
-   ov_subscription *subscriptions = (ov_subscription*)malloc(count * sizeof(ov_subscription));
-   if (subscriptions == NULL) {
-      return;
+   if ((subscriptions = calloc(count, sizeof(ov_subscription))) == NULL) {
+      return (NULL);
    }
 
    uint8_t i;
@@ -170,14 +170,16 @@ ov_subscription* GetAllSubscriptions(unsigned char *buffer) {
 ov_subscription* GetSubscriptions(unsigned char *buffer, int offset, ov_indexes *indexes) {
    uint8_t count = 0;
 
-   ov_subscriptionindices *indices = GetSubscriptionIndices(buffer, offset, &count, indexes);
-   if (indices == NULL) {
-	   return NULL;
+   ov_subscriptionindices *indices;
+
+   if ((indices = GetSubscriptionIndices(buffer, offset, &count, indexes)) == NULL) {
+      return (NULL);
    }
 
-   ov_subscription *subscriptions = (ov_subscription*)malloc(count * sizeof(ov_subscription));
-   if (subscriptions == NULL) {
-      return NULL;
+   ov_subscription *subscriptions;
+
+   if ((subscriptions = calloc(count, sizeof(ov_subscription))) == NULL) {
+      return (NULL);
    }
 
    uint8_t i;

@@ -101,10 +101,10 @@ void GetAllIndexes(unsigned char *buffer, uint16_t bPoint, ov_indexes *ovIndexes
 
 ov_subscriptionindices* GetSubscriptionIndices(unsigned char *buffer, uint16_t bPoint, uint8_t *count, ov_indexes *ovIndexes) { /* input 0xf10 or 0xf30 */
    *count = GetBitsFromBuffer(buffer + bPoint, 0, 4);
+   ov_subscriptionindices *indice;
 
-   ov_subscriptionindices *indice = (ov_subscriptionindices*)malloc(*count * sizeof(ov_subscriptionindices));
-   if (indice == NULL) {
-      return;
+   if ((indice = calloc(*count, sizeof(ov_subscriptionindices))) == NULL) {
+      return (NULL);
    }
 
    uint8_t offset = 4;
@@ -126,10 +126,10 @@ ov_subscriptionindices* GetSubscriptionIndices(unsigned char *buffer, uint16_t b
 
 ov_transactionindices* GetTravelIndices(unsigned char *buffer, unsigned short bPoint, uint8_t *count, ov_indexes *ovIndexes) { /* input 0xf50 or 0xf70 */
    *count = GetBitsFromBuffer(buffer + bPoint, 0, 4);
+   ov_transactionindices *indice;
 
-   ov_transactionindices *indice = (ov_transactionindices *)malloc(*count * sizeof(ov_transactionindices));
-   if (indice == NULL) {
-      return;
+   if ((indice = calloc(*count, sizeof(ov_transactionindices))) == NULL) {
+      return (NULL);
    }
 
    uint8_t offset = 4;

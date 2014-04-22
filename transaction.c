@@ -108,10 +108,10 @@ void OvcClassicTransaction(unsigned char *buffer, int offset, ov_transaction *ov
 ov_transaction* GetAllTransactions(unsigned char *buffer) {
    uint8_t count = 28; /* Number of slots including the unused slot */
    int offset = 0xB00;
+   ov_transaction *transactions;
 
-   ov_transaction *transactions = (ov_transaction*)malloc(count * sizeof(ov_transaction));
-   if (transactions == NULL) {
-      return;
+   if ((transactions = calloc(count, sizeof(ov_transaction))) == NULL) {
+      return (NULL);
    }
 
    uint8_t i;
@@ -131,10 +131,10 @@ ov_transaction* GetAllTransactions(unsigned char *buffer) {
 /* Get the transactionhistory according to the index, ranges from 0xB00 - 0xC60*/
 ov_transaction* GetTransactionhistory(unsigned char *buffer, ov_indexes *indexes) {
    uint8_t count = 10;
+   ov_transaction *transactions;
 
-   ov_transaction *transactions = (ov_transaction*)malloc(count * sizeof(ov_transaction));
-   if (transactions == NULL) {
-      return NULL;
+   if ((transactions = calloc(count, sizeof(ov_transaction))) == NULL) {
+      return (NULL);
    }
 
    uint8_t i;
@@ -148,10 +148,10 @@ ov_transaction* GetTransactionhistory(unsigned char *buffer, ov_indexes *indexes
 /* Get the travelhistory according to the index, ranges from 0xC80 - 0xE40 */
 ov_transaction* GetTravelhistory(unsigned char *buffer, ov_indexes *indexes) {
    uint8_t count = 12;
+   ov_transaction *transactions;
 
-   ov_transaction *transactions = (ov_transaction*)malloc(count * sizeof(ov_transaction));
-   if (transactions == NULL) {
-      return NULL;
+   if ((transactions = calloc(count, sizeof(ov_transaction))) == NULL) {
+      return (NULL);
    }
 
    uint8_t i;
