@@ -126,3 +126,7 @@ void GetDateSince1997(uint16_t days, char *out) {
 
    sprintf(out, "%04u-%02u-%02u", iYear, iMonth + 1, days + 1);
 }
+
+void GetTime(uint16_t time, char *out) {
+   sprintf(out, "%02u:%02u", time / 60, time % 60);
+}

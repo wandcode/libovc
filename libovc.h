@@ -222,6 +222,7 @@ DllImport ov_subscription* GetSubscriptions(unsigned char *buffer, int offset, o
 DllImport void GetClasstype(uint16_t classtype, char *out);
 DllImport void GetCompanyName(uint8_t company, char *out);
 DllImport void GetDateSince1997(uint16_t days, char *out);
+DllImport void GetTime(uint16_t time, char *out);
 
 /* Utils */
 uint32_t GetBitsFromBuffer(uint8_t *buffer, uint8_t iStartBit, uint8_t iLength);
