@@ -219,8 +219,9 @@ DllImport ov_transaction* GetTravelhistory(unsigned char *buffer, ov_indexes *in
 DllImport ov_transaction* GetAllTransactions(unsigned char *buffer);
 DllImport ov_subscription* GetSubscriptions(unsigned char *buffer, int offset, ov_indexes *indexes);
 
-DllImport char* GetClasstype(uint16_t classtype);
-DllImport char* GetCompanyName(uint8_t company);
+DllImport void GetClasstype(uint16_t classtype, char *out);
+DllImport void GetCompanyName(uint8_t company, char *out);
+DllImport void GetDateSince1997(uint16_t days, char *out);
 
 /* Utils */
 uint32_t GetBitsFromBuffer(uint8_t *buffer, uint8_t iStartBit, uint8_t iLength);
