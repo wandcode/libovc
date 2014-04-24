@@ -1,4 +1,4 @@
-CC=gcc
+CC=clang
 CFLAGS= -fPIC -I.
 LDFLAGS=-shared
 DEPS = libovc.h
